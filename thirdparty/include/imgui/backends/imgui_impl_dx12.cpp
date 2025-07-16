@@ -50,7 +50,7 @@
 //  2018-06-08: DirectX12: Use draw_data->DisplayPos and draw_data->DisplaySize to setup projection matrix and clipping rectangle (to ease support for future multi-viewport).
 //  2018-02-22: Merged into master with all Win32 code synchronized to other examples.
 
-#include "imgui.h"
+#include "imgui/imgui.h"
 #ifndef IMGUI_DISABLE
 #include "imgui_impl_dx12.h"
 
@@ -919,15 +919,15 @@ void ImGui_ImplDX12_Shutdown()
     IM_DELETE(bd);
 }
 
-    void ImGui_ImplDX12_NewFrame()
-    {
-        ImGui_ImplDX12_Data* bd = ImGui_ImplDX12_GetBackendData();
-        IM_ASSERT(bd != nullptr && "Context or backend not initialized! Did you call ImGui_ImplDX12_Init()?");
+void ImGui_ImplDX12_NewFrame()
+{
+    ImGui_ImplDX12_Data* bd = ImGui_ImplDX12_GetBackendData();
+    IM_ASSERT(bd != nullptr && "Context or backend not initialized! Did you call ImGui_ImplDX12_Init()?");
 
-        if (!bd->pPipelineState)
-            if (!ImGui_ImplDX12_CreateDeviceObjects())
-                IM_ASSERT(0 && "ImGui_ImplDX12_CreateDeviceObjects() failed!");
-    }
+    if (!bd->pPipelineState)
+        if (!ImGui_ImplDX12_CreateDeviceObjects())
+            IM_ASSERT(0 && "ImGui_ImplDX12_CreateDeviceObjects() failed!");
+}
 
 //-----------------------------------------------------------------------------
 

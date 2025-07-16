@@ -15,28 +15,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\vendor\ImGui\backends\imgui_impl_dx12.cpp">
+    <ClCompile Include="thirdparty\include\imgui\backends\imgui_impl_dx12.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\vendor\ImGui\backends\imgui_impl_win32.cpp">
+    <ClCompile Include="thirdparty\include\imgui\backends\imgui_impl_win32.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\vendor\ImGui\imgui.cpp">
+    <ClCompile Include="thirdparty\include\imgui\imgui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\vendor\ImGui\imgui_demo.cpp">
+    <ClCompile Include="thirdparty\include\imgui\imgui_demo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\vendor\ImGui\imgui_draw.cpp">
+    <ClCompile Include="thirdparty\include\imgui\imgui_draw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\vendor\ImGui\imgui_tables.cpp">
+    <ClCompile Include="thirdparty\include\imgui\imgui_tables.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\vendor\ImGui\imgui_widgets.cpp">
+    <ClCompile Include="thirdparty\include\imgui\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\render\Dx12Renderer.cpp">
@@ -53,40 +53,37 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\vendor\ImGui\backends\imgui_impl_dx12.h">
+    <ClInclude Include="thirdparty\include\imgui\backends\imgui_impl_dx12.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\ImGui\backends\imgui_impl_win32.h">
+    <ClInclude Include="thirdparty\include\imgui\backends\imgui_impl_win32.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\ImGui\imconfig.h">
+    <ClInclude Include="thirdparty\include\imgui\imconfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\ImGui\imgui.h">
+    <ClInclude Include="thirdparty\include\imgui\imgui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\ImGui\imgui_internal.h">
+    <ClInclude Include="thirdparty\include\imgui\imgui_internal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\ImGui\imstb_rectpack.h">
+    <ClInclude Include="thirdparty\include\imgui\imstb_rectpack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\ImGui\imstb_textedit.h">
+    <ClInclude Include="thirdparty\include\imgui\imstb_textedit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\vendor\ImGui\imstb_truetype.h">
+    <ClInclude Include="thirdparty\include\imgui\imstb_truetype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\render\Dx12Renderer.h">
+    <ClInclude Include="include\render\Dx12Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\manager\ImGuiManager.h">
+    <ClInclude Include="include\manager\ImGuiManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\image\ImageLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vendor\stb\stb_image.h">
+    <ClInclude Include="include\image\ImageLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\vendor\directx\d3d12.h">
@@ -158,7 +155,13 @@
     <ClInclude Include="src\vendor\directx\dxgiformat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\render\Dx12Utils.h">
+    <ClInclude Include="include\render\Dx12Utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Stdafx.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\include\stb\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

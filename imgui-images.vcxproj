@@ -73,12 +73,24 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)build\$(Platform) - $(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)build\$(Platform) - $(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)src\vendor\ImGui;$(SolutionDir)src\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)src;$(SolutionDir)include;$(IncludePath)</IncludePath>
+    <SourcePath>$(SourcePath)</SourcePath>
+    <ExternalIncludePath>$(SolutionDir)thirdparty\include;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)build\$(Platform) - $(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)build\$(Platform) - $(Configuration)\</IntDir>
     <IncludePath>$(SolutionDir)src\vendor\ImGui;$(SolutionDir)src\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <VcpkgUseStatic>true</VcpkgUseStatic>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <VcpkgUseStatic>true</VcpkgUseStatic>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnableManifest>false</VcpkgEnableManifest>
+    <VcpkgEnabled>false</VcpkgEnabled>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -113,12 +125,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <LanguageStandard_C>stdclatest</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d12.lib;d3dcompiler.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d12.lib;d3dcompiler.lib;dxgi.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,30 +145,31 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>d3d12.lib;d3dcompiler.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\image\ImageLoader.cpp" />
     <ClCompile Include="src\manager\ImGuiManager.cpp" />
     <ClCompile Include="src\render\Dx12Renderer.cpp" />
     <ClCompile Include="src\render\Dx12Utils.cpp" />
-    <ClCompile Include="src\vendor\ImGui\backends\imgui_impl_dx12.cpp" />
-    <ClCompile Include="src\vendor\ImGui\backends\imgui_impl_win32.cpp" />
-    <ClCompile Include="src\vendor\ImGui\imgui.cpp" />
-    <ClCompile Include="src\vendor\ImGui\imgui_demo.cpp" />
-    <ClCompile Include="src\vendor\ImGui\imgui_draw.cpp" />
-    <ClCompile Include="src\vendor\ImGui\imgui_tables.cpp" />
-    <ClCompile Include="src\vendor\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="thirdparty\include\imgui\backends\imgui_impl_dx12.cpp" />
+    <ClCompile Include="thirdparty\include\imgui\backends\imgui_impl_win32.cpp" />
+    <ClCompile Include="thirdparty\include\imgui\imgui.cpp" />
+    <ClCompile Include="thirdparty\include\imgui\imgui_demo.cpp" />
+    <ClCompile Include="thirdparty\include\imgui\imgui_draw.cpp" />
+    <ClCompile Include="thirdparty\include\imgui\imgui_tables.cpp" />
+    <ClCompile Include="thirdparty\include\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\image\ImageLoader.h" />
-    <ClInclude Include="src\manager\ImGuiManager.h" />
-    <ClInclude Include="src\render\Dx12Renderer.h" />
-    <ClInclude Include="src\render\Dx12Utils.h" />
+    <ClInclude Include="include\image\ImageLoader.h" />
+    <ClInclude Include="include\manager\ImGuiManager.h" />
+    <ClInclude Include="include\render\Dx12Renderer.h" />
+    <ClInclude Include="include\render\Dx12Utils.h" />
+    <ClInclude Include="include\Stdafx.hpp" />
     <ClInclude Include="src\vendor\directx\d3d12.h" />
     <ClInclude Include="src\vendor\directx\d3d12compatibility.h" />
     <ClInclude Include="src\vendor\directx\d3d12sdklayers.h" />
@@ -180,15 +193,15 @@
     <ClInclude Include="src\vendor\directx\dxcore_interface.h" />
     <ClInclude Include="src\vendor\directx\dxgicommon.h" />
     <ClInclude Include="src\vendor\directx\dxgiformat.h" />
-    <ClInclude Include="src\vendor\ImGui\backends\imgui_impl_dx12.h" />
-    <ClInclude Include="src\vendor\ImGui\backends\imgui_impl_win32.h" />
-    <ClInclude Include="src\vendor\ImGui\imconfig.h" />
-    <ClInclude Include="src\vendor\ImGui\imgui.h" />
-    <ClInclude Include="src\vendor\ImGui\imgui_internal.h" />
-    <ClInclude Include="src\vendor\ImGui\imstb_rectpack.h" />
-    <ClInclude Include="src\vendor\ImGui\imstb_textedit.h" />
-    <ClInclude Include="src\vendor\ImGui\imstb_truetype.h" />
-    <ClInclude Include="src\vendor\stb\stb_image.h" />
+    <ClInclude Include="thirdparty\include\imgui\backends\imgui_impl_dx12.h" />
+    <ClInclude Include="thirdparty\include\imgui\backends\imgui_impl_win32.h" />
+    <ClInclude Include="thirdparty\include\imgui\imconfig.h" />
+    <ClInclude Include="thirdparty\include\imgui\imgui.h" />
+    <ClInclude Include="thirdparty\include\imgui\imgui_internal.h" />
+    <ClInclude Include="thirdparty\include\imgui\imstb_rectpack.h" />
+    <ClInclude Include="thirdparty\include\imgui\imstb_textedit.h" />
+    <ClInclude Include="thirdparty\include\imgui\imstb_truetype.h" />
+    <ClInclude Include="thirdparty\include\stb\stb_image.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
