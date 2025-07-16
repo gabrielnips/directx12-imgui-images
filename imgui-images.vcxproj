@@ -80,7 +80,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)build\$(Platform) - $(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)build\$(Platform) - $(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)src\vendor\ImGui;$(SolutionDir)src\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)src;$(SolutionDir)include;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)thirdparty\include;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgUseStatic>true</VcpkgUseStatic>
